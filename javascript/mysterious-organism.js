@@ -49,6 +49,24 @@ const pAequorFactory = (specimenNum, dna) => {
       
       const cOrG = this.dna.filter(base => base === 'C' || base === 'G');
       return (cOrG.length / this.dna.length * 100) >= 60;
+    },
+    complementStrand() {
+      return this.dna.map(base => {
+        switch(base) {
+          case 'A':
+              return 'T';
+              break;
+          case 'T':
+              return 'A';
+              break;
+          case 'C':
+              return 'G';
+              break;
+          case 'G':
+              return 'C';
+              break;
+        }
+      })
     }
   }
 }
@@ -80,4 +98,7 @@ createPAequors(30, survivablePAequors30);
 console.log(survivablePAequors30);
 console.log(survivablePAequors30[0].willLikelySurvive());
 
+
+console.log(pAequor.dna);
+console.log(pAequor.complementStrand());
 
